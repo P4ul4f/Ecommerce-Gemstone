@@ -4,6 +4,8 @@ import { Button } from "@/components/Button";
 import Image from "next/image";
 import starsBg from "@/assets/stars.png";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { BASE_URL } from "@/constants/BASE_URL";
 
 interface Product {
   _id: string;
@@ -19,22 +21,21 @@ export const Products = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const res = await fetch("http://localhost:8080/api/products");
-        if (!res.ok) {
-          throw new Error("Failed to fetch products");
+        setLoading(true); // Asegúrate de que la carga esté activada antes de hacer la solicitud
+        try {
+            const res = await axios.get(`${BASE_URL}/api/products`);
+            // La respuesta de axios se encuentra en res.data
+            setProducts(res.data); 
+            setLoading(false);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "Unknown error");
+            setLoading(false);
         }
-        const data = await res.json();
-        setProducts(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-        setLoading(false);
-      }
     };
 
     fetchProducts();
-  }, []);
+}, []);
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;

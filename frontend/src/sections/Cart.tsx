@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/Button";
 import { useCart } from "@/context/CartContext"; 
 import { useEffect } from "react";
+import { BASE_URL } from "@/constants/BASE_URL";
 
 export const Cart: React.FC = () => {
   const { cart, dispatch } = useCart(); // Extraer cart y dispatch del contexto
@@ -68,7 +69,7 @@ export const Cart: React.FC = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:8080/api/orders", {
+      const res = await fetch(`${BASE_URL}/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

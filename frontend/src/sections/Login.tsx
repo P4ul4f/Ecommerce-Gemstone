@@ -66,7 +66,7 @@ export const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="email@example.com"
                   required
-                  className="p-2 bg-white/80 border border-white rounded focus:outline-none focus:border-purple-800"
+                  className="p-2 bg-white/80 border text-black border-white rounded focus:outline-none focus:border-purple-800"
                 />
               </div>
               <div className="flex flex-col mb-4">
@@ -83,7 +83,7 @@ export const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Your password"
                   required
-                  className="p-2 bg-white/80 border border-white rounded focus:outline-none focus:border-purple-800"
+                  className="p-2 bg-white/80 border text-black border-white rounded focus:outline-none focus:border-purple-800"
                 />
               </div>
               {errorMessage && (
