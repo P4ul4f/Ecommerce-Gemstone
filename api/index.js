@@ -27,15 +27,11 @@ const productRoute = require("./routes/Product");
 const orderRoute = require("./routes/Order");
 
 
-const allowedOrigins = [
-  "https://ecommerce-gemstone-xd1v-n92tr71zq-p4ul4fs-projects.vercel.app",
-  "https://ecommerce-gemstone-xd1v.vercel.app",
-];
-
 const corsOptions = {
   origin: "*", // Permitir todos los orígenes
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true 
+  allowedHeaders: ["Content-Type", "Authorization"], 
+  credentials: true
 };
 
 app.use(cors(corsOptions));
