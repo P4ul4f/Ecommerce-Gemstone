@@ -101,8 +101,8 @@ const CartPage = () => {
                       </a>
                     </div>
                   {/* Items de la Orden */}
-                  {order.orderItems.length > 0 ? (
-                    order.orderItems.map((item) => (
+                  {order.items && order.items.length > 0 ? (
+                    order.items.map((item) => (
                       <div key={item._id} className="flex items-center gap-4">
                         <Image
                           src={item.image}
@@ -114,7 +114,7 @@ const CartPage = () => {
                         <div className="flex-grow">
                           <h3 className="text-lg text-white">{item.name}</h3>
                           <p className="text-white/50">
-                            ${item.price.toFixed(2)} x {item.qty}
+                            ${item.price.toFixed(2)} x {item.quantity}
                           </p>
                         </div>
                       </div>
