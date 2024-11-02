@@ -5,10 +5,17 @@ import Image from "next/image";
 import starsBg from "@/assets/stars.png";
 import { motion } from "framer-motion";
 
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  image: string;
+}
+
 export const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);;
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -20,8 +27,8 @@ export const Products = () => {
         const data = await res.json();
         setProducts(data);
         setLoading(false);
-      } catch (error) {
-        setError(error.message);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Unknown error");
         setLoading(false);
       }
     };

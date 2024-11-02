@@ -5,7 +5,7 @@ import { useCart } from "@/context/CartContext";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "axios";
 import { BASE_URL } from "@/constants/BASE_URL";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 export const Order: React.FC = () => {
   const { cart } = useCart();
@@ -101,8 +101,6 @@ export const Order: React.FC = () => {
     }
   };
 
-  
-
   return (
     <section className="container mx-auto p-8 flex flex-col md:flex-row gap-8">
       {/* Sección de productos */}
@@ -195,7 +193,15 @@ export const Order: React.FC = () => {
                   style={{ layout: "vertical" }}
                   createOrder={(data, actions) => {
                     return actions.order.create({
-                      purchase_units: [{ amount: { value: total.toFixed(2) } }],
+                      intent: "CAPTURE",
+                      purchase_units: [
+                        {
+                          amount: {
+                            currency_code: "USD",
+                            value: total.toFixed(2),
+                          },
+                        },
+                      ],
                     });
                   }}
                   onApprove={async (data, actions) => {
