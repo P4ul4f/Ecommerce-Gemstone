@@ -27,14 +27,25 @@ const productRoute = require("./routes/Product");
 const orderRoute = require("./routes/Order");
 
 
-// CORS
+const allowedOrigins = [
+  "https://ecommerce-gemstone-xd1v-n92tr71zq-p4ul4fs-projects.vercel.app",
+  "https://ecommerce-gemstone-xd1v.vercel.app",
+];
+
 const corsOptions = {
-  origin: "https://ecommerce-gemstone-xd1v.vercel.app", 
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true 
 };
 
 app.use(cors(corsOptions));
+
 
 
 app.use(express.json());
