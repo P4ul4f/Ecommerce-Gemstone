@@ -26,12 +26,12 @@ const userRoute = require("./routes/User");
 const productRoute = require("./routes/Product");
 const orderRoute = require("./routes/Order");
 
-//CORS
+
 // CORS
 const corsOptions = {
-  origin: "https://ecommerce-gemstone-xd1v.vercel.app", // Reemplaza con tu dominio de frontend
+  origin: "https://ecommerce-gemstone-xd1v.vercel.app", 
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true // Esto permite el uso de cookies y credenciales
+  credentials: true 
 };
 
 app.use(cors(corsOptions));
