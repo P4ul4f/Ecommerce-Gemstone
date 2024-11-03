@@ -16,7 +16,7 @@ export const Login = () => {
     setErrorMessage("");
 
     try {
-      const response = await api.post("/users/login", { email, password });
+      const response = await api.post("/api/users/login", { email, password });
       // Guardar el token
       localStorage.setItem("authToken", response.data.token);
       window.location.href = "/";

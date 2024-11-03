@@ -33,7 +33,7 @@ const Profile = () => {
           },
         };
 
-        const response = await api.get("/users/profile", config);
+        const response = await api.get("/api/users/profile", config);
         setProfileData(response.data);
       } catch (err) {
         setError("Error fetching profile data.");

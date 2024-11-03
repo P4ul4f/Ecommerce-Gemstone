@@ -27,7 +27,7 @@ export const EditProfile = ({ profileData }: { profileData: ProfileData }) => {
       };
 
       const response = await api.put(
-        "/users/profile",
+        "/api/users/profile",
         { name, email, password },
         config
       );

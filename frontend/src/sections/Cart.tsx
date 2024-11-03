@@ -69,7 +69,7 @@ export const Cart: React.FC = () => {
     };
 
     try {
-      const res = await fetch(`${BASE_URL}/orders`, {
+      const res = await fetch(`${BASE_URL}/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
